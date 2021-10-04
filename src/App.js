@@ -1,25 +1,38 @@
-import logo from './logo.svg';
-import './App.css';
+import React from 'react'
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
+
+// util components
+import PrivateRoute from './components/PrivateRoute'
+import ToastComponent from './components/ToastComponent'
+
+// contexts
+import LoginProvider from './contexts/LoginContext'
+import ApiProvider from './contexts/ApiContext'
+
+// screens
+import HomeScreen from './screens/HomeScreen'
+import AuthScreen from './screens/AuthScreen'
+import JobsScreen from './screens/JobsScreen'
+import CreateJobScreen from './screens/CreateJobScreen'
+import PNFScreen from './screens/PNFScreen'
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+  	<LoginProvider>
+      <ApiProvider>
+        <ToastComponent/>
+  	 	  <Router>
+  	 	  	<Switch>
+  	 	  		<Route path='/' exact component={HomeScreen} />
+            <Route path='/auth/:type' component={AuthScreen} />
+            <PrivateRoute path='/jobs' role={0} exact component={JobsScreen} />
+            <PrivateRoute path='/create-job' role={0} exact component={CreateJobScreen} />
+  	 	  		<Route default component={PNFScreen} />
+  	 	  	</Switch>
+  	 	  </Router>
+      </ApiProvider>
+  	</LoginProvider>
+  )
 }
 
 export default App;

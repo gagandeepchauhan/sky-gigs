@@ -1,0 +1,95 @@
+###
+POST https://jobs-api.squareboat.info/api/v1/auth/login
+Content-Type:application/json
+
+{
+	"email": "swatch.aura@gmail.com",
+	"password": "12345"
+}
+
+###
+POST https://jobs-api.squareboat.info/api/v1/auth/register
+Content-Type:application/json
+
+{
+	"email": "gagan@gmail.com",
+	"password": "123456",
+	"confirmPassword": "123456",
+	"name": "gagan",
+	"skills": "HTML, CSS, JS, Nodejs",
+	"userRole": 1
+}
+
+###
+GET https://jobs-api.squareboat.info/api/v1/auth/resetpassword?email=swatch.aura@gmail.com
+
+###
+GET https://jobs-api.squareboat.info/api/v1/auth/resetpassword/eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InN3YXRjaC5hdXJhQGdtYWlsLmNvbSIsImlhdCI6MTYzMzE2NDU1MCwiZXhwIjoxNjMzMTY4MTUwfQ.jcAOz_Y00igT81aDGCoh8DjA8zzCxPoZebAjze5AW-o
+
+###
+POST https://jobs-api.squareboat.info/api/v1/auth/resetpassword
+Content-Type:application/json
+
+{
+	"password": "12345",
+	"confirmPassword": "12345",
+	"token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InN3YXRjaC5hdXJhQGdtYWlsLmNvbSIsImlhdCI6MTYzMzE2NDU1MCwiZXhwIjoxNjMzMTY4MTUwfQ.jcAOz_Y00igT81aDGCoh8DjA8zzCxPoZebAjze5AW-o"
+}
+
+###
+GET https://jobs-api.squareboat.info/api/v1/jobs?page=1
+
+###
+GET https://jobs-api.squareboat.info/api/v1/jobs/233b98c3-be2d-4aa5-b19f-fa82282e1596
+
+###
+POST https://jobs-api.squareboat.info/api/v1/jobs
+Content-Type:application/json
+Authorization:eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InN3YXRjaC5hdXJhQGdtYWlsLmNvbSIsIm5hbWUiOiJzd2F0Y2giLCJza2lsbHMiOiJIVE1MLCBDU1MsIEpTLCBOb2RlanMiLCJ1c2VyUm9sZSI6MCwiY3JlYXRlZEF0IjoiMjAyMS0xMC0wMlQwODo0NzozMC4wMDBaIiwidXBkYXRlZEF0IjoiMjAyMS0xMC0wMlQwODo1NDoxOC4wMDBaIiwiaWQiOiIzZTIxYTE2NC1iNjU0LTRiNGItYjE0ZC1kNmIwMTczYmVlMTYiLCJpYXQiOjE2MzMxNjgyNjR9.tHwddhIGrps-Yt_T2Ox5SidpC-bzv4IsHTOXJ80J5BE
+
+{
+	"title": "job title",
+	"description": "job desc",
+	"location": "meerut"
+}
+
+###
+DELETE https://jobs-api.squareboat.info/api/v1/jobs
+Content-Type:application/json
+Authorization:<recruiter_token>
+
+{
+	"jobId": ""
+}
+
+###
+GET https://jobs-api.squareboat.info/api/v1/candidates/jobs?page=1
+Content-Type:application/json
+Authorization:<candidate_token>
+
+###
+POST https://jobs-api.squareboat.info/api/v1/candidates/jobs
+Content-Type:application/json
+Authorization:<candidate_token>
+
+{
+	"jobId": ""
+}
+
+###
+GET https://jobs-api.squareboat.info/api/v1/candidates/jobs/applied
+Content-Type:application/json
+Authorization:<candidate_token>
+
+###
+GET https://jobs-api.squareboat.info/api/v1/recruiters/jobs
+Content-Type:application/json
+Authorization:<recruiter_token>
+
+###
+GET https://jobs-api.squareboat.info/api/v1/recruiters/jobs/<job_id>/candidates
+Content-Type:application/json
+Authorization:<recruiter_token>
+
+
+
