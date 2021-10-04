@@ -9,7 +9,7 @@ import {useLogin} from '../contexts/LoginContext'
 export default function Applicants({jobId,close}) {
 	const {getJobApplicants} = useApi()
 	const {setToast} = useLogin()
-	const [applications,setApplications] = useState(null)
+	const [applications,setApplications] = useState([])
 	const [loading,setLoading] = useState(false)
 	const [error,setError] = useState(null)
 
@@ -18,7 +18,7 @@ export default function Applicants({jobId,close}) {
 			setLoading(true)
 			setError(null)
 			const res = await getJobApplicants(jobId)
-			const resData = res?.data?.data?.data
+			const resData = res?.data?.data
 			if(resData)
 				setApplications(resData)
 			console.log(res?.data)
@@ -54,36 +54,23 @@ export default function Applicants({jobId,close}) {
 					<>
 						<h6 className="sec-color-text">Total {applications?.length} applications</h6>
 						<div className="applications mt-3 styled-scrollbar">
-							<div className="application-card">
+						{applications?.map(app=>(
+							<div key={app.id} className="application-card">
 								<div className="card-head">
-									<Avatar name='Eliza Lucas' imgSrc={null} />
+									<Avatar name={app.name} imgSrc={null} />
 									<div className="app-info">
-										<h6 className="sec-color-text">Eliza Lucas</h6>
-										<small>abc@gmail.com</small>
+										<h6 className="sec-color-text">{app.name}</h6>
+										<small>{app.email}</small>
 									</div>
 								</div>
 								<div className="card-body">
 									<strong className="sec-color-text">Skills</strong>
 									<p className="sec-color-text mb-0">
-										Coding, designing, graphics, website, app ui
+										{app.skills}
 									</p>
 								</div>
 							</div>
-							<div className="application-card">
-								<div className="card-head">
-									<Avatar name='Eliza Lucas' imgSrc={null} />
-									<div className="app-info">
-										<h6 className="sec-color-text">Eliza Lucas</h6>
-										<small>abc@gmail.com</small>
-									</div>
-								</div>
-								<div className="card-body">
-									<strong className="sec-color-text">Skills</strong>
-									<p className="sec-color-text mb-0">
-										Coding, designing, graphics, website, app ui
-									</p>
-								</div>
-							</div>
+						))}
 						</div>
 					</>
 				}

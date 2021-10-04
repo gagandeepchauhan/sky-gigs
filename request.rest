@@ -3,8 +3,8 @@ POST https://jobs-api.squareboat.info/api/v1/auth/login
 Content-Type:application/json
 
 {
-	"email": "swatch.aura@gmail.com",
-	"password": "12345"
+	"email": "gagan@gmail.com",
+	"password": "123456"
 }
 
 ###
@@ -70,10 +70,10 @@ Authorization:<candidate_token>
 ###
 POST https://jobs-api.squareboat.info/api/v1/candidates/jobs
 Content-Type:application/json
-Authorization:<candidate_token>
+Authorization:eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImdhZ2FuQGdtYWlsLmNvbSIsIm5hbWUiOiJnYWdhbiIsInNraWxscyI6IkhUTUwsIENTUywgSlMsIE5vZGVqcyIsInVzZXJSb2xlIjoxLCJjcmVhdGVkQXQiOiIyMDIxLTEwLTA0VDA3OjQyOjU5LjAwMFoiLCJ1cGRhdGVkQXQiOiIyMDIxLTEwLTA0VDA3OjQyOjU5LjAwMFoiLCJpZCI6ImVlZjU5YzEyLTA3ZDAtNGM4ZC1iMWFjLTczZmNlNTFmMGJiYyIsImlhdCI6MTYzMzMzNDg0NX0.9y0uyZx2gGzUp3TH5UpMkIxTh4-JaNMXYo1RhEQZ384
 
 {
-	"jobId": ""
+	"jobId": "425e5e74-47c4-4341-aebb-b2af5d6fd343"
 }
 
 ###
@@ -84,12 +84,12 @@ Authorization:<candidate_token>
 ###
 GET https://jobs-api.squareboat.info/api/v1/recruiters/jobs
 Content-Type:application/json
-Authorization:<recruiter_token>
+Authorization:eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InN3YXRjaC5hdXJhQGdtYWlsLmNvbSIsIm5hbWUiOiJzd2F0Y2giLCJza2lsbHMiOiJIVE1MLCBDU1MsIEpTLCBOb2RlanMiLCJ1c2VyUm9sZSI6MCwiY3JlYXRlZEF0IjoiMjAyMS0xMC0wMlQwODo0NzozMC4wMDBaIiwidXBkYXRlZEF0IjoiMjAyMS0xMC0wNFQwNTowODozOS4wMDBaIiwiaWQiOiIzZTIxYTE2NC1iNjU0LTRiNGItYjE0ZC1kNmIwMTczYmVlMTYiLCJpYXQiOjE2MzMzMzQ3NDB9.pryZo7-EvtPNCIuitSM3pzxlSjQaYwFhjFZsQh3D30A
 
 ###
-GET https://jobs-api.squareboat.info/api/v1/recruiters/jobs/<job_id>/candidates
+GET https://jobs-api.squareboat.info/api/v1/recruiters/jobs/425e5e74-47c4-4341-aebb-b2af5d6fd343/candidates
 Content-Type:application/json
-Authorization:<recruiter_token>
+Authorization:eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InN3YXRjaC5hdXJhQGdtYWlsLmNvbSIsIm5hbWUiOiJzd2F0Y2giLCJza2lsbHMiOiJIVE1MLCBDU1MsIEpTLCBOb2RlanMiLCJ1c2VyUm9sZSI6MCwiY3JlYXRlZEF0IjoiMjAyMS0xMC0wMlQwODo0NzozMC4wMDBaIiwidXBkYXRlZEF0IjoiMjAyMS0xMC0wNFQwNTowODozOS4wMDBaIiwiaWQiOiIzZTIxYTE2NC1iNjU0LTRiNGItYjE0ZC1kNmIwMTczYmVlMTYiLCJpYXQiOjE2MzMzMzQ3NDB9.pryZo7-EvtPNCIuitSM3pzxlSjQaYwFhjFZsQh3D30A
 
 
 
