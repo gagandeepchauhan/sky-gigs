@@ -16,13 +16,6 @@ export default function Signup() {
 	const [error,setError] = useState(null)
 	const history = useHistory()
 
-	function toggleUserRole(){
-		setUserRole(prev=>{
-			if(prev) return 0
-			return 1
-		})
-	}
-
 	async function handleSubmit(e){
 		e.preventDefault()
 		if(password!==confirmPassword){
@@ -52,12 +45,12 @@ export default function Signup() {
 				<Form.Group className="mb-3">
 					<Form.Label className="sec-color-text">I'm a*</Form.Label>
 					<div className="d-flex justify-content-start align-items-center">
-						<div onClick={toggleUserRole} className={`user-role ${userRole===0 && 'active'}`}>
-							<span>R</span>
+						<div onClick={()=>setUserRole(0)} className={`user-role ${userRole===0 && 'active'}`}>
+							<span><i className="fas fa-user-check"></i></span>
 							<span>Recruiter</span>
 						</div>
-						<div onClick={toggleUserRole} className={`user-role ${userRole===1 && 'active'}`}>
-							<span>C</span>
+						<div onClick={()=>setUserRole(1)} className={`user-role ${userRole===1 && 'active'}`}>
+							<span><i className="fas fa-users"></i></span>
 							<span>Candidate</span>
 						</div>
 					</div>
@@ -81,7 +74,7 @@ export default function Signup() {
 					/>
 				</Form.Group>
 				<Form.Group className="mb-3 d-flex justify-content-between align-items-center">
-					<div>
+					<div className="mr-1">
 						<Form.Label className="sec-color-text">Create Password*</Form.Label>
 						<Form.Control 
 							placeholder="Enter your password" 
@@ -109,7 +102,13 @@ export default function Signup() {
 					/>
 				</Form.Group>
 				<div align="center">
-					<button type="submit" className='mt-3 auth-btn'>Signup</button>
+					{loading ?
+						<div className="mt-3 spinner-grow prime-color-text" role="status">
+						  <span className="sr-only"></span>
+						</div>
+						:
+						<button type="submit" className='mt-3 auth-btn'>Signup</button>
+					}
 				</div>
 			</Form>
 			<div align="center">

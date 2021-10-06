@@ -64,7 +64,13 @@ export default function CreateJob() {
 					/>
 				</Form.Group>
 				<div align="center">
-					<button type="submit" className='mt-3 auth-btn'>Post</button>
+					{loading ?
+						<div className="mt-3 spinner-grow prime-color-text" role="status">
+						  <span className="sr-only"></span>
+						</div>
+						:
+						<button type="submit" className='mt-3 auth-btn'>Post</button>
+					}
 				</div>
 			</Form>
 		</div>

@@ -4,9 +4,12 @@ import { useHistory, Link } from 'react-router-dom'
 
 import Navbar from '../components/Navbar'
 import Applicants from '../components/Applicants'
+import FullScreenLoader from '../components/FullScreenLoader'
 
 import {useApi} from '../contexts/ApiContext'
 import {useLogin} from '../contexts/LoginContext'
+
+const LIMIT = 20
 
 export default function JobsScreen() {
 	const {setToast} = useLogin()
@@ -16,17 +19,30 @@ export default function JobsScreen() {
 	const [selectedJobId,setSelectedJobId] = useState(null)
 	const [loading,setLoading] = useState(false)
 	const [error,setError] = useState(null)
+	const [page,setPage] = useState(1)
+	const [limit,setLimit] = useState(LIMIT)
+	const [totalCount,setTotalCount] = useState(0)
 	const history = useHistory()
 
+	function showLeft(){
+		return page>1
+	}
+	function showRight(){
+		return (page*limit)<totalCount
+	}
 	async function fetchJobs(){
 		try{
 			setLoading(true)
 			setError(null)
-			const res = await getRecruiterJobs()
+			const res = await getRecruiterJobs(page)
 			// console.log(res.data)
 			const resData = res?.data?.data?.data
-			if(resData)
+			if(resData){
+				let metadata = res?.data?.data?.metadata
+				setLimit(metadata?.limit)
+				setTotalCount(metadata?.count)
 				setJobs(resData)
+			}
 		}catch(err){
 			setError(err)
 			setToast({title:'Error',desc:err.toString()})
@@ -42,9 +58,18 @@ export default function JobsScreen() {
 	useEffect(()=>{
 		fetchJobs()
 	},[])
+	useEffect(()=>{
+		if(jobs?.length>0){
+			fetchJobs()
+		}
+	},[page])
+
 
 	return (
 		<>
+			{loading &&
+				<FullScreenLoader />
+			}
 			<div className="head head-job"></div>
 			<div className="jobs">
 				<Navbar />
@@ -55,11 +80,11 @@ export default function JobsScreen() {
 							<Link to="/" className="text-light">&nbsp;Home</Link>
 						</p>
 					</div>
-					<h6 className="text-light mt-4 mb-3">
+					<h5 className="text-light mt-4 mb-3">
 						<strong>Jobs posted by you</strong>
-					</h6>
-					<div className="job-group row">
-						{jobs.map(job=>(
+					</h5>
+					<div className="job-group row styled-scrollbar">
+						{jobs?.map(job=>(
 						<div key={job.id} className="p-3 job-card col col-12 col-sm-6 col-md-4">
 							<h6>{job.title}</h6>
 							<div className="info-content">{job.description}</div>
@@ -75,6 +100,17 @@ export default function JobsScreen() {
 						</div>	
 						))}
 					</div>
+					{jobs?.length!=0 &&
+						<div className="pagination">
+							<button className="page-btn" onClick={()=>setPage(prev=>prev-1)} disabled={!showLeft()}>
+								<i className="fas fa-backward"></i>
+							</button>
+							<span>{page}</span>
+							<button className="page-btn" onClick={()=>setPage(prev=>prev+1)} disabled={!showRight()}>
+								<i className="fas fa-forward"></i>
+							</button>
+						</div>
+					}
 					{jobs?.length===0 &&
 						<div className="empty-jobs">
 							<div>

@@ -59,7 +59,13 @@ export default function Login() {
 
 				</Form.Group>
 				<div align="center">
-					<button type="submit" className='mt-3 auth-btn'>Login</button>
+					{loading ?
+						<div className="mt-3 spinner-grow prime-color-text" role="status">
+						  <span className="sr-only"></span>
+						</div>
+						:
+						<button type="submit" className='mt-3 auth-btn'>Login</button>
+					}
 				</div>
 			</Form>
 			<div align="center">

@@ -67,7 +67,13 @@ export default function ResetPassword({token}) {
 							/>
 						</Form.Group>
 						<div align="center">
-							<button type="submit" className='mt-3 auth-btn'>Reset</button>
+							{loading ?
+								<div className="mt-3 spinner-grow prime-color-text" role="status">
+								  <span className="sr-only"></span>
+								</div>
+								:
+								<button type="submit" className='mt-3 auth-btn'>Reset</button>
+							}
 						</div>
 					</Form>
 				</>

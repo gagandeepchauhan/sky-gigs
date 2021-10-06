@@ -3,8 +3,8 @@ POST https://jobs-api.squareboat.info/api/v1/auth/login
 Content-Type:application/json
 
 {
-	"email": "gagan@gmail.com",
-	"password": "123456"
+	"email": "sky@gmail.com",
+	"password": "123abc"
 }
 
 ###
@@ -12,10 +12,10 @@ POST https://jobs-api.squareboat.info/api/v1/auth/register
 Content-Type:application/json
 
 {
-	"email": "gagan@gmail.com",
+	"email": "skydeep@gmail.com",
 	"password": "123456",
 	"confirmPassword": "123456",
-	"name": "gagan",
+	"name": "sky",
 	"skills": "HTML, CSS, JS, Nodejs",
 	"userRole": 1
 }
@@ -70,7 +70,7 @@ Authorization:<candidate_token>
 ###
 POST https://jobs-api.squareboat.info/api/v1/candidates/jobs
 Content-Type:application/json
-Authorization:eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImdhZ2FuQGdtYWlsLmNvbSIsIm5hbWUiOiJnYWdhbiIsInNraWxscyI6IkhUTUwsIENTUywgSlMsIE5vZGVqcyIsInVzZXJSb2xlIjoxLCJjcmVhdGVkQXQiOiIyMDIxLTEwLTA0VDA3OjQyOjU5LjAwMFoiLCJ1cGRhdGVkQXQiOiIyMDIxLTEwLTA0VDA3OjQyOjU5LjAwMFoiLCJpZCI6ImVlZjU5YzEyLTA3ZDAtNGM4ZC1iMWFjLTczZmNlNTFmMGJiYyIsImlhdCI6MTYzMzMzNDg0NX0.9y0uyZx2gGzUp3TH5UpMkIxTh4-JaNMXYo1RhEQZ384
+Authorization:eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjMyZDMwYTI1LThiMDktNDRjMS04OGNkLTQ5MzJjZWRmMjNlNyIsImVtYWlsIjoic2t5ZGVlcEBnbWFpbC5jb20iLCJuYW1lIjoic2t5Iiwic2tpbGxzIjoiSFRNTCwgQ1NTLCBKUywgTm9kZWpzIiwidXNlclJvbGUiOjEsInVwZGF0ZWRBdCI6IjIwMjEtMTAtMDVUMDU6NTE6MTMuNjEyWiIsImNyZWF0ZWRBdCI6IjIwMjEtMTAtMDVUMDU6NTE6MTMuNjEyWiIsImlhdCI6MTYzMzQxMzA3M30.wRjmNSSOXYExeIj1Kcr5mokqpJTKp-R87QMx7h5wfHA
 
 {
 	"jobId": "425e5e74-47c4-4341-aebb-b2af5d6fd343"

@@ -50,7 +50,13 @@ export default function ForgotPassword() {
 					/>
 				</Form.Group>
 				<div align="center">
-					<button type="submit" className='mt-3 auth-btn'>Submit</button>
+					{loading ?
+						<div className="mt-3 spinner-grow prime-color-text" role="status">
+						  <span className="sr-only"></span>
+						</div>
+						:
+						<button type="submit" className='mt-3 auth-btn'>Submit</button>
+					}
 				</div>
 			</Form>
 		</div>

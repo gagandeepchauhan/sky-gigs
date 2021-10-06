@@ -35,7 +35,7 @@ export default function Applicants({jobId,close}) {
 
 	return (
 		<Modal.Body className="app-modal">
-			<div className=" p-4">
+			<div className=" p-3">
 				<h2 className="auth-head app-head pb-3">Applicants for this job</h2>
 				<span onClick={close} className="close-icon">
 					<i className="fas fa-times"></i>
@@ -59,11 +59,11 @@ export default function Applicants({jobId,close}) {
 								<div className="card-head">
 									<Avatar name={app.name} imgSrc={null} />
 									<div className="app-info">
-										<h6 className="sec-color-text">{app.name}</h6>
+										<h6 className="sec-color-text mb-0">{app.name}</h6>
 										<small>{app.email}</small>
 									</div>
 								</div>
-								<div className="card-body">
+								<div className="card-body p-0">
 									<strong className="sec-color-text">Skills</strong>
 									<p className="sec-color-text mb-0">
 										{app.skills}

@@ -19,8 +19,8 @@ export default function ApiProvider({children}) {
 	}
 
 	// recruiter api
-	function getRecruiterJobs(){
-		return api.get('/recruiters/jobs',headConfig)
+	function getRecruiterJobs(page){
+		return api.get(`/recruiters/jobs?page=${page}`,headConfig)
 	}
 	function getJobApplicants(jobId){
 		return api.get(`/recruiters/jobs/${jobId}/candidates`,headConfig)
