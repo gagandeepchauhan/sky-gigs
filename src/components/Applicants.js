@@ -1,4 +1,5 @@
 import React,{useState,useEffect} from 'react'
+import Loader from './Loader'
 import {Modal} from 'react-bootstrap'
 
 import Avatar from './Avatar'
@@ -24,7 +25,8 @@ export default function Applicants({jobId,close}) {
 			console.log(res?.data)
 		}catch(err){
 			setError(err)
-			setToast({title:'Error',desc:err.toString()})
+			setToast({title:'Error',desc:err?.response?.data?.message ?? err.toString()})
+			console.log(err?.response?.data?.message)
 		}
 		setLoading(false)
 	}
@@ -40,6 +42,11 @@ export default function Applicants({jobId,close}) {
 				<span onClick={close} className="close-icon">
 					<i className="fas fa-times"></i>
 				</span>
+				{loading &&
+					<div className="centered-loader">
+						<Loader />
+					</div>
+				}
 				{applications?.length===0 ?
 					<>
 						<h6 className="sec-color-text">{applications.length} applications</h6>

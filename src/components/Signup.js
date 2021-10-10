@@ -32,8 +32,8 @@ export default function Signup() {
 			console.log(res)
 		}catch(err){
 			setError(err)
-			setToast({title:'Error',desc:err.toString()})
-			console.log(err)
+			setToast({title:'Error',desc:err?.response?.data?.message ?? err?.response?.data?.errors ?? err.toString()})
+			console.log(err?.response?.data?.message ?? err?.response?.data?.errors)
 		}
 		setLoading(false)
 	}

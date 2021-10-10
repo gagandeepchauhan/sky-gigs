@@ -63,6 +63,16 @@ body{
 	right:0;
 	bottom:0;
 }
+.centered-loader{
+	display:flex;
+	justify-content: center;
+	align-items: center;
+	position: absolute;
+	top:100px;
+	left:0;
+	bottom: 0;
+	right:0;
+}
 
 /*------------------------------------------- project styles ---------------------------------------*/
 /*------------------------- head backgroung -----------------------*/
@@ -420,6 +430,7 @@ body{
 	max-height:400px;
 	overflow-y:auto;
 	padding:10px;
+	position:relative;
 }
 .application-card{
 	padding:10px;

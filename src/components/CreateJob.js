@@ -15,17 +15,18 @@ export default function CreateJob() {
 	const [error,setError] = useState(null)
 	const history = useHistory()
 
-	async function handleSubmit(){
+	async function handleSubmit(e){
+		e.preventDefault()
 		try{
 			setLoading(true)
 			setError(null)
 			const res = await createJob({title,description,location})
 			setToast({title:'Success',desc:'Job posted successfully'})
-			window.location.href = '/jobs'
+			history.push('/jobs')
 		}catch(err){
 			setError(err)
-			setToast({title:'Error',desc:err.toString()})
-			history.push('/')
+			setToast({title:'Error',desc:err?.response?.data?.message ?? err?.response?.data?.errors ?? err.toString()})
+			console.log(err?.response?.data?.message ?? err?.response?.data?.errors)
 		}
 		setLoading(false)
 	}

@@ -25,8 +25,8 @@ export default function ForgotPassword() {
 			console.log(res)
 		}catch(err){
 			setError(err)
-			setToast({title:'Error',desc:err.toString()})
-			console.log(err)
+			setToast({title:'Error',desc:err?.response?.data?.message ?? err.toString()})
+			console.log(err?.response?.data?.message)
 		}
 		setLoading(false)
 	}
